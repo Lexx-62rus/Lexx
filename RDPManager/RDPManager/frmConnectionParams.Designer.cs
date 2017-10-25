@@ -37,9 +37,14 @@
             this.tcSettings = new System.Windows.Forms.TabControl();
             this.tpGeneral = new System.Windows.Forms.TabPage();
             this.groupBox2 = new System.Windows.Forms.GroupBox();
+            this.textBox3 = new System.Windows.Forms.TextBox();
+            this.label10 = new System.Windows.Forms.Label();
+            this.textBox2 = new System.Windows.Forms.TextBox();
+            this.label9 = new System.Windows.Forms.Label();
+            this.label8 = new System.Windows.Forms.Label();
             this.cbxColorDepth = new System.Windows.Forms.ComboBox();
             this.label7 = new System.Windows.Forms.Label();
-            this.cbFitToWindow = new System.Windows.Forms.CheckBox();
+            this.cbxFitToWindow = new System.Windows.Forms.CheckBox();
             this.cbxScreenResolution = new System.Windows.Forms.ComboBox();
             this.label6 = new System.Windows.Forms.Label();
             this.groupBox1 = new System.Windows.Forms.GroupBox();
@@ -52,17 +57,18 @@
             this.tbServerName = new System.Windows.Forms.TextBox();
             this.label2 = new System.Windows.Forms.Label();
             this.tpResources = new System.Windows.Forms.TabPage();
-            this.label8 = new System.Windows.Forms.Label();
-            this.label9 = new System.Windows.Forms.Label();
-            this.textBox2 = new System.Windows.Forms.TextBox();
-            this.label10 = new System.Windows.Forms.Label();
-            this.textBox3 = new System.Windows.Forms.TextBox();
+            this.groupBox3 = new System.Windows.Forms.GroupBox();
+            this.cbxPrinters = new System.Windows.Forms.CheckBox();
+            this.cbxClipboard = new System.Windows.Forms.CheckBox();
+            this.cbxDrives = new System.Windows.Forms.CheckBox();
             this.panel1.SuspendLayout();
             this.panel2.SuspendLayout();
             this.tcSettings.SuspendLayout();
             this.tpGeneral.SuspendLayout();
             this.groupBox2.SuspendLayout();
             this.groupBox1.SuspendLayout();
+            this.tpResources.SuspendLayout();
+            this.groupBox3.SuspendLayout();
             this.SuspendLayout();
             // 
             // panel1
@@ -156,7 +162,7 @@
             this.groupBox2.Controls.Add(this.label8);
             this.groupBox2.Controls.Add(this.cbxColorDepth);
             this.groupBox2.Controls.Add(this.label7);
-            this.groupBox2.Controls.Add(this.cbFitToWindow);
+            this.groupBox2.Controls.Add(this.cbxFitToWindow);
             this.groupBox2.Controls.Add(this.cbxScreenResolution);
             this.groupBox2.Controls.Add(this.label6);
             this.groupBox2.Dock = System.Windows.Forms.DockStyle.Fill;
@@ -166,6 +172,47 @@
             this.groupBox2.TabIndex = 9;
             this.groupBox2.TabStop = false;
             this.groupBox2.Text = "Display properties";
+            // 
+            // textBox3
+            // 
+            this.textBox3.Location = new System.Drawing.Point(310, 50);
+            this.textBox3.Name = "textBox3";
+            this.textBox3.Size = new System.Drawing.Size(88, 20);
+            this.textBox3.TabIndex = 9;
+            // 
+            // label10
+            // 
+            this.label10.AutoSize = true;
+            this.label10.Location = new System.Drawing.Point(263, 53);
+            this.label10.Name = "label10";
+            this.label10.Size = new System.Drawing.Size(41, 13);
+            this.label10.TabIndex = 8;
+            this.label10.Text = "Height:";
+            // 
+            // textBox2
+            // 
+            this.textBox2.Location = new System.Drawing.Point(155, 50);
+            this.textBox2.Name = "textBox2";
+            this.textBox2.Size = new System.Drawing.Size(88, 20);
+            this.textBox2.TabIndex = 7;
+            // 
+            // label9
+            // 
+            this.label9.AutoSize = true;
+            this.label9.Location = new System.Drawing.Point(111, 53);
+            this.label9.Name = "label9";
+            this.label9.Size = new System.Drawing.Size(38, 13);
+            this.label9.TabIndex = 6;
+            this.label9.Text = "Width:";
+            // 
+            // label8
+            // 
+            this.label8.AutoSize = true;
+            this.label8.Location = new System.Drawing.Point(8, 53);
+            this.label8.Name = "label8";
+            this.label8.Size = new System.Drawing.Size(42, 13);
+            this.label8.TabIndex = 5;
+            this.label8.Text = "Custom";
             // 
             // cbxColorDepth
             // 
@@ -190,17 +237,17 @@
             this.label7.TabIndex = 3;
             this.label7.Text = "Color depth";
             // 
-            // cbFitToWindow
+            // cbxFitToWindow
             // 
-            this.cbFitToWindow.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
-            this.cbFitToWindow.AutoSize = true;
-            this.cbFitToWindow.CheckAlign = System.Drawing.ContentAlignment.MiddleRight;
-            this.cbFitToWindow.Location = new System.Drawing.Point(310, 21);
-            this.cbFitToWindow.Name = "cbFitToWindow";
-            this.cbFitToWindow.Size = new System.Drawing.Size(88, 17);
-            this.cbFitToWindow.TabIndex = 2;
-            this.cbFitToWindow.Text = "Fit to window";
-            this.cbFitToWindow.UseVisualStyleBackColor = true;
+            this.cbxFitToWindow.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
+            this.cbxFitToWindow.AutoSize = true;
+            this.cbxFitToWindow.CheckAlign = System.Drawing.ContentAlignment.MiddleRight;
+            this.cbxFitToWindow.Location = new System.Drawing.Point(310, 21);
+            this.cbxFitToWindow.Name = "cbxFitToWindow";
+            this.cbxFitToWindow.Size = new System.Drawing.Size(88, 17);
+            this.cbxFitToWindow.TabIndex = 2;
+            this.cbxFitToWindow.Text = "Fit to window";
+            this.cbxFitToWindow.UseVisualStyleBackColor = true;
             // 
             // cbxScreenResolution
             // 
@@ -330,54 +377,57 @@
             // 
             // tpResources
             // 
+            this.tpResources.Controls.Add(this.groupBox3);
             this.tpResources.Location = new System.Drawing.Point(4, 22);
             this.tpResources.Name = "tpResources";
             this.tpResources.Padding = new System.Windows.Forms.Padding(3);
             this.tpResources.Size = new System.Drawing.Size(410, 247);
             this.tpResources.TabIndex = 1;
-            this.tpResources.Text = "tabPage2";
+            this.tpResources.Text = "Advanced";
             this.tpResources.UseVisualStyleBackColor = true;
             // 
-            // label8
+            // groupBox3
             // 
-            this.label8.AutoSize = true;
-            this.label8.Location = new System.Drawing.Point(8, 53);
-            this.label8.Name = "label8";
-            this.label8.Size = new System.Drawing.Size(42, 13);
-            this.label8.TabIndex = 5;
-            this.label8.Text = "Custom";
+            this.groupBox3.Controls.Add(this.cbxDrives);
+            this.groupBox3.Controls.Add(this.cbxClipboard);
+            this.groupBox3.Controls.Add(this.cbxPrinters);
+            this.groupBox3.Dock = System.Windows.Forms.DockStyle.Top;
+            this.groupBox3.Location = new System.Drawing.Point(3, 3);
+            this.groupBox3.Name = "groupBox3";
+            this.groupBox3.Size = new System.Drawing.Size(404, 51);
+            this.groupBox3.TabIndex = 0;
+            this.groupBox3.TabStop = false;
+            this.groupBox3.Text = "Local Resources";
             // 
-            // label9
+            // cbxPrinters
             // 
-            this.label9.AutoSize = true;
-            this.label9.Location = new System.Drawing.Point(111, 53);
-            this.label9.Name = "label9";
-            this.label9.Size = new System.Drawing.Size(38, 13);
-            this.label9.TabIndex = 6;
-            this.label9.Text = "Width:";
+            this.cbxPrinters.AutoSize = true;
+            this.cbxPrinters.Location = new System.Drawing.Point(5, 19);
+            this.cbxPrinters.Name = "cbxPrinters";
+            this.cbxPrinters.Size = new System.Drawing.Size(61, 17);
+            this.cbxPrinters.TabIndex = 0;
+            this.cbxPrinters.Text = "Printers";
+            this.cbxPrinters.UseVisualStyleBackColor = true;
             // 
-            // textBox2
+            // cbxClipboard
             // 
-            this.textBox2.Location = new System.Drawing.Point(155, 50);
-            this.textBox2.Name = "textBox2";
-            this.textBox2.Size = new System.Drawing.Size(88, 20);
-            this.textBox2.TabIndex = 7;
+            this.cbxClipboard.AutoSize = true;
+            this.cbxClipboard.Location = new System.Drawing.Point(101, 19);
+            this.cbxClipboard.Name = "cbxClipboard";
+            this.cbxClipboard.Size = new System.Drawing.Size(70, 17);
+            this.cbxClipboard.TabIndex = 1;
+            this.cbxClipboard.Text = "Clipboard";
+            this.cbxClipboard.UseVisualStyleBackColor = true;
             // 
-            // label10
+            // cbxDrives
             // 
-            this.label10.AutoSize = true;
-            this.label10.Location = new System.Drawing.Point(263, 53);
-            this.label10.Name = "label10";
-            this.label10.Size = new System.Drawing.Size(41, 13);
-            this.label10.TabIndex = 8;
-            this.label10.Text = "Height:";
-            // 
-            // textBox3
-            // 
-            this.textBox3.Location = new System.Drawing.Point(310, 50);
-            this.textBox3.Name = "textBox3";
-            this.textBox3.Size = new System.Drawing.Size(88, 20);
-            this.textBox3.TabIndex = 9;
+            this.cbxDrives.AutoSize = true;
+            this.cbxDrives.Location = new System.Drawing.Point(200, 19);
+            this.cbxDrives.Name = "cbxDrives";
+            this.cbxDrives.Size = new System.Drawing.Size(56, 17);
+            this.cbxDrives.TabIndex = 2;
+            this.cbxDrives.Text = "Drives";
+            this.cbxDrives.UseVisualStyleBackColor = true;
             // 
             // frmConnectionParams
             // 
@@ -398,6 +448,9 @@
             this.groupBox2.PerformLayout();
             this.groupBox1.ResumeLayout(false);
             this.groupBox1.PerformLayout();
+            this.tpResources.ResumeLayout(false);
+            this.groupBox3.ResumeLayout(false);
+            this.groupBox3.PerformLayout();
             this.ResumeLayout(false);
 
         }
@@ -415,7 +468,7 @@
         private System.Windows.Forms.TabPage tpResources;
         private System.Windows.Forms.GroupBox groupBox2;
         private System.Windows.Forms.Label label7;
-        private System.Windows.Forms.CheckBox cbFitToWindow;
+        private System.Windows.Forms.CheckBox cbxFitToWindow;
         private System.Windows.Forms.ComboBox cbxScreenResolution;
         private System.Windows.Forms.Label label6;
         private System.Windows.Forms.GroupBox groupBox1;
@@ -433,5 +486,9 @@
         private System.Windows.Forms.TextBox textBox2;
         private System.Windows.Forms.Label label9;
         private System.Windows.Forms.Label label8;
+        private System.Windows.Forms.GroupBox groupBox3;
+        private System.Windows.Forms.CheckBox cbxClipboard;
+        private System.Windows.Forms.CheckBox cbxPrinters;
+        private System.Windows.Forms.CheckBox cbxDrives;
     }
 }
