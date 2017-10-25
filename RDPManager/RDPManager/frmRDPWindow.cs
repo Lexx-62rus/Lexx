@@ -25,8 +25,11 @@ namespace RDPManager
         private int _addWidth;
         private double _aspectRatio;
 
+        // internal flags
+        private bool _FullScreen;
+
         // old display configuration
-        private Rectangle _bounds;
+        private Rectangle _NormalWindowBounds;
 
         // connection configuration
         private cfgRemoteServer _connectionConfig;
@@ -43,6 +46,42 @@ namespace RDPManager
                 if (rdp.AdvancedSettings8.SmartSizing != btnFitToWindow.Checked)
                 {
                     rdp.AdvancedSettings8.SmartSizing = btnFitToWindow.Checked;
+                }
+            }
+        }
+        public bool FullScreen
+        {
+            get
+            {
+                return _FullScreen;
+            }
+            set
+            {
+                if (value != _FullScreen)
+                {
+                    _FullScreen = value;
+                    if (value)
+                    {
+                        // set window size for full screen
+                        MsRdpClient8NotSafeForScripting rdp = (MsRdpClient8NotSafeForScripting)ClientControl.GetOcx();
+                        rdp.AdvancedSettings8.SmartSizing = false;
+                        _NormalWindowBounds = Bounds;
+                        FormBorderStyle = FormBorderStyle.None;
+                        ShowControls = false;
+                        Bounds = Screen.FromControl(this).Bounds;
+                        rdp.FullScreen = true;
+                    }
+                    else
+                    {
+                        // restore original window size
+                        MsRdpClient8NotSafeForScripting rdp = (MsRdpClient8NotSafeForScripting)ClientControl.GetOcx();
+                        rdp.AdvancedSettings8.SmartSizing = true;
+                        FormBorderStyle = FormBorderStyle.Sizable;
+                        ShowControls = true;
+                        Bounds = _NormalWindowBounds;
+                        rdp.AdvancedSettings8.SmartSizing = FitToWindow;
+                        rdp.FullScreen = false;
+                    }
                 }
             }
         }
@@ -69,8 +108,6 @@ namespace RDPManager
                 size.Width = Convert.ToInt32((size.Height - _addHeight) * _aspectRatio) + _addWidth;
             }
             Size = size;
-            /*_add_WidthInn = Width - width;
-            _add_HeightInn = Height - height;*/
         }
 
         public void ConnectToServer(cfgRemoteServer Config)
@@ -91,7 +128,8 @@ namespace RDPManager
             rdp.AdvancedSettings8.EnableCredSspSupport = true;
             rdp.AdvancedSettings8.NegotiateSecurityLayer = false;
             rdp.AdvancedSettings8.SmartSizing = true;
-            rdp.AdvancedSettings8.ContainerHandledFullScreen = -1;
+            rdp.AdvancedSettings8.ContainerHandledFullScreen = 1;
+            //rdp.AdvancedSettings8.
             //rdp.AdvancedSettings8.RelativeMouseMode
             //rdp.AdvancedSettings8.RedirectDrives = true;            
             rdp.DesktopHeight = _connectionConfig.DispalyHeight;
@@ -168,6 +206,20 @@ namespace RDPManager
                 m.Result = (IntPtr)1;
                 return;
             }
+            if (m.Msg == 0x0112) // WM_SYSCOMMAND
+            {
+                // Check window state
+                if (m.WParam == new IntPtr(0xF030)) // Maximize event - SC_MAXIMIZE from Winuser.h
+                {
+                    FullScreen = true;
+                    return;
+                }
+                if (m.WParam == new IntPtr(0xF120)) // Restore event - SC_RESTORE from Winuser.h
+                {
+                    //FullScreen = false;
+                    //return;
+                }
+            }
             base.WndProc(ref m);
         }
 
@@ -185,37 +237,19 @@ namespace RDPManager
             Close();
         }
 
-        private void ClientControl_OnEnterFullScreenMode(object sender, EventArgs e)
-        {
-            MsRdpClient8NotSafeForScripting rdp = (MsRdpClient8NotSafeForScripting)ClientControl.GetOcx();
-            rdp.AdvancedSettings8.SmartSizing = false;
-            //Hide();
-        }
-        private void ClientControl_OnLeaveFullScreenMode(object sender, EventArgs e)
-        {
-            MsRdpClient8NotSafeForScripting rdp = (MsRdpClient8NotSafeForScripting)ClientControl.GetOcx();
-            rdp.AdvancedSettings8.SmartSizing = true;
-        }
-
         private void ClientControl_OnRequestGoFullScreen(object sender, EventArgs e)
         {
-            MsRdpClient8NotSafeForScripting rdp = (MsRdpClient8NotSafeForScripting)ClientControl.GetOcx();
-            rdp.AdvancedSettings8.SmartSizing = false;            
-            _bounds = Bounds;
-            FormBorderStyle = FormBorderStyle.None;
-            ShowControls = false;
-            Bounds = Screen.FromControl(this).Bounds;
-            rdp.FullScreen = true;            
+            FullScreen = true;           
         }
 
         private void ClientControl_OnRequestLeaveFullScreen(object sender, EventArgs e)
         {
-            MsRdpClient8NotSafeForScripting rdp = (MsRdpClient8NotSafeForScripting)ClientControl.GetOcx();
-            rdp.AdvancedSettings8.SmartSizing = true;
-            FormBorderStyle = FormBorderStyle.Sizable;
-            ShowControls = true;
-            Bounds = _bounds;
-            rdp.FullScreen = false;
+            FullScreen = false;
+        }
+        private void ClientControl_OnRequestContainerMinimize(object sender, EventArgs e)
+        {
+            //
+            WindowState = FormWindowState.Minimized;
         }
 
         private void frmRDPWindow_FormClosed(object sender, FormClosedEventArgs e)
@@ -228,5 +262,6 @@ namespace RDPManager
         {
             FitToWindow = btnFitToWindow.Checked;
         }
+
     }
 }

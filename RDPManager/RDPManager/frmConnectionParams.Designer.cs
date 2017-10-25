@@ -54,13 +54,16 @@
             this.label4 = new System.Windows.Forms.Label();
             this.tbUserName = new System.Windows.Forms.TextBox();
             this.label3 = new System.Windows.Forms.Label();
-            this.tbServerName = new System.Windows.Forms.TextBox();
+            this.tbServer = new System.Windows.Forms.TextBox();
             this.label2 = new System.Windows.Forms.Label();
             this.tpResources = new System.Windows.Forms.TabPage();
             this.groupBox3 = new System.Windows.Forms.GroupBox();
-            this.cbxPrinters = new System.Windows.Forms.CheckBox();
-            this.cbxClipboard = new System.Windows.Forms.CheckBox();
             this.cbxDrives = new System.Windows.Forms.CheckBox();
+            this.cbxClipboard = new System.Windows.Forms.CheckBox();
+            this.cbxPrinters = new System.Windows.Forms.CheckBox();
+            this.cbxPorts = new System.Windows.Forms.CheckBox();
+            this.label11 = new System.Windows.Forms.Label();
+            this.tbPort = new System.Windows.Forms.TextBox();
             this.panel1.SuspendLayout();
             this.panel2.SuspendLayout();
             this.tcSettings.SuspendLayout();
@@ -285,13 +288,15 @@
             // 
             // groupBox1
             // 
+            this.groupBox1.Controls.Add(this.tbPort);
+            this.groupBox1.Controls.Add(this.label11);
             this.groupBox1.Controls.Add(this.tbDomain);
             this.groupBox1.Controls.Add(this.label5);
             this.groupBox1.Controls.Add(this.tbPassword);
             this.groupBox1.Controls.Add(this.label4);
             this.groupBox1.Controls.Add(this.tbUserName);
             this.groupBox1.Controls.Add(this.label3);
-            this.groupBox1.Controls.Add(this.tbServerName);
+            this.groupBox1.Controls.Add(this.tbServer);
             this.groupBox1.Controls.Add(this.label2);
             this.groupBox1.Dock = System.Windows.Forms.DockStyle.Top;
             this.groupBox1.Location = new System.Drawing.Point(3, 3);
@@ -357,14 +362,14 @@
             this.label3.TabIndex = 10;
             this.label3.Text = "User name:";
             // 
-            // tbServerName
+            // tbServer
             // 
-            this.tbServerName.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
+            this.tbServer.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
-            this.tbServerName.Location = new System.Drawing.Point(114, 19);
-            this.tbServerName.Name = "tbServerName";
-            this.tbServerName.Size = new System.Drawing.Size(284, 20);
-            this.tbServerName.TabIndex = 9;
+            this.tbServer.Location = new System.Drawing.Point(114, 19);
+            this.tbServer.Name = "tbServer";
+            this.tbServer.Size = new System.Drawing.Size(190, 20);
+            this.tbServer.TabIndex = 9;
             // 
             // label2
             // 
@@ -388,16 +393,37 @@
             // 
             // groupBox3
             // 
+            this.groupBox3.Controls.Add(this.cbxPorts);
             this.groupBox3.Controls.Add(this.cbxDrives);
             this.groupBox3.Controls.Add(this.cbxClipboard);
             this.groupBox3.Controls.Add(this.cbxPrinters);
             this.groupBox3.Dock = System.Windows.Forms.DockStyle.Top;
             this.groupBox3.Location = new System.Drawing.Point(3, 3);
             this.groupBox3.Name = "groupBox3";
-            this.groupBox3.Size = new System.Drawing.Size(404, 51);
+            this.groupBox3.Size = new System.Drawing.Size(404, 66);
             this.groupBox3.TabIndex = 0;
             this.groupBox3.TabStop = false;
             this.groupBox3.Text = "Local Resources";
+            // 
+            // cbxDrives
+            // 
+            this.cbxDrives.AutoSize = true;
+            this.cbxDrives.Location = new System.Drawing.Point(101, 19);
+            this.cbxDrives.Name = "cbxDrives";
+            this.cbxDrives.Size = new System.Drawing.Size(56, 17);
+            this.cbxDrives.TabIndex = 2;
+            this.cbxDrives.Text = "Drives";
+            this.cbxDrives.UseVisualStyleBackColor = true;
+            // 
+            // cbxClipboard
+            // 
+            this.cbxClipboard.AutoSize = true;
+            this.cbxClipboard.Location = new System.Drawing.Point(5, 42);
+            this.cbxClipboard.Name = "cbxClipboard";
+            this.cbxClipboard.Size = new System.Drawing.Size(70, 17);
+            this.cbxClipboard.TabIndex = 1;
+            this.cbxClipboard.Text = "Clipboard";
+            this.cbxClipboard.UseVisualStyleBackColor = true;
             // 
             // cbxPrinters
             // 
@@ -409,25 +435,31 @@
             this.cbxPrinters.Text = "Printers";
             this.cbxPrinters.UseVisualStyleBackColor = true;
             // 
-            // cbxClipboard
+            // cbxPorts
             // 
-            this.cbxClipboard.AutoSize = true;
-            this.cbxClipboard.Location = new System.Drawing.Point(101, 19);
-            this.cbxClipboard.Name = "cbxClipboard";
-            this.cbxClipboard.Size = new System.Drawing.Size(70, 17);
-            this.cbxClipboard.TabIndex = 1;
-            this.cbxClipboard.Text = "Clipboard";
-            this.cbxClipboard.UseVisualStyleBackColor = true;
+            this.cbxPorts.AutoSize = true;
+            this.cbxPorts.Location = new System.Drawing.Point(101, 42);
+            this.cbxPorts.Name = "cbxPorts";
+            this.cbxPorts.Size = new System.Drawing.Size(50, 17);
+            this.cbxPorts.TabIndex = 3;
+            this.cbxPorts.Text = "Ports";
+            this.cbxPorts.UseVisualStyleBackColor = true;
             // 
-            // cbxDrives
+            // label11
             // 
-            this.cbxDrives.AutoSize = true;
-            this.cbxDrives.Location = new System.Drawing.Point(200, 19);
-            this.cbxDrives.Name = "cbxDrives";
-            this.cbxDrives.Size = new System.Drawing.Size(56, 17);
-            this.cbxDrives.TabIndex = 2;
-            this.cbxDrives.Text = "Drives";
-            this.cbxDrives.UseVisualStyleBackColor = true;
+            this.label11.AutoSize = true;
+            this.label11.Location = new System.Drawing.Point(310, 22);
+            this.label11.Name = "label11";
+            this.label11.Size = new System.Drawing.Size(29, 13);
+            this.label11.TabIndex = 16;
+            this.label11.Text = "Port:";
+            // 
+            // tbPort
+            // 
+            this.tbPort.Location = new System.Drawing.Point(345, 19);
+            this.tbPort.Name = "tbPort";
+            this.tbPort.Size = new System.Drawing.Size(53, 20);
+            this.tbPort.TabIndex = 17;
             // 
             // frmConnectionParams
             // 
@@ -478,7 +510,7 @@
         private System.Windows.Forms.Label label4;
         private System.Windows.Forms.TextBox tbUserName;
         private System.Windows.Forms.Label label3;
-        private System.Windows.Forms.TextBox tbServerName;
+        private System.Windows.Forms.TextBox tbServer;
         private System.Windows.Forms.Label label2;
         private System.Windows.Forms.ComboBox cbxColorDepth;
         private System.Windows.Forms.TextBox textBox3;
@@ -490,5 +522,8 @@
         private System.Windows.Forms.CheckBox cbxClipboard;
         private System.Windows.Forms.CheckBox cbxPrinters;
         private System.Windows.Forms.CheckBox cbxDrives;
+        private System.Windows.Forms.TextBox tbPort;
+        private System.Windows.Forms.Label label11;
+        private System.Windows.Forms.CheckBox cbxPorts;
     }
 }

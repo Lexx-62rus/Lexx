@@ -46,10 +46,9 @@
             this.ClientControl.Size = new System.Drawing.Size(784, 536);
             this.ClientControl.TabIndex = 0;
             this.ClientControl.OnDisconnected += new AxMSTSCLib.IMsTscAxEvents_OnDisconnectedEventHandler(this.ClientControl_OnDisconnected);
-            this.ClientControl.OnEnterFullScreenMode += new System.EventHandler(this.ClientControl_OnEnterFullScreenMode);
-            this.ClientControl.OnLeaveFullScreenMode += new System.EventHandler(this.ClientControl_OnLeaveFullScreenMode);
             this.ClientControl.OnRequestGoFullScreen += new System.EventHandler(this.ClientControl_OnRequestGoFullScreen);
             this.ClientControl.OnRequestLeaveFullScreen += new System.EventHandler(this.ClientControl_OnRequestLeaveFullScreen);
+            this.ClientControl.OnRequestContainerMinimize += new System.EventHandler(this.ClientControl_OnRequestContainerMinimize);
             // 
             // tsMain
             // 
@@ -65,7 +64,7 @@
             // 
             this.btnFitToWindow.CheckOnClick = true;
             this.btnFitToWindow.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Image;
-            this.btnFitToWindow.Image = ((System.Drawing.Image)(resources.GetObject("btnFitToWindow.Image")));
+            this.btnFitToWindow.Image = global::RDPManager.Properties.Resources.full_screen_21;
             this.btnFitToWindow.ImageTransparentColor = System.Drawing.Color.Magenta;
             this.btnFitToWindow.Name = "btnFitToWindow";
             this.btnFitToWindow.Size = new System.Drawing.Size(23, 22);
@@ -80,6 +79,7 @@
             this.ClientSize = new System.Drawing.Size(784, 561);
             this.Controls.Add(this.ClientControl);
             this.Controls.Add(this.tsMain);
+            this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.Name = "frmRDPWindow";
             this.Text = "frmRDPWindow";
             this.FormClosed += new System.Windows.Forms.FormClosedEventHandler(this.frmRDPWindow_FormClosed);
