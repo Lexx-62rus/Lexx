@@ -120,13 +120,13 @@
     </COMReference>
   </ItemGroup>
   <ItemGroup>
-    <None Include="Images\full_screen_2.ico" />
-  </ItemGroup>
-  <ItemGroup>
     <None Include="Images\full_screen_2.png" />
   </ItemGroup>
   <ItemGroup>
     <None Include="Images\zoom_auto.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="Images\screen.ico" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 

@@ -28,8 +28,8 @@ namespace RDPManager
             //DispalyHeight = 768;
             DisplayWidth = 1920;
             DispalyHeight = 1080;
-            FullScreen = false;
-            FitToWindow = true;
+            FullScreen = true;
+            FitToWindow = false;
             ColorDepth = 24;
         }
     }

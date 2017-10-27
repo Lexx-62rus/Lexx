@@ -1,5 +1,7 @@
-﻿using MSTSCLib;
+﻿using AxMSTSCLib;
+using MSTSCLib;
 using System;
+using System.ComponentModel;
 using System.Drawing;
 using System.Windows.Forms;
 
@@ -13,10 +15,12 @@ namespace RDPManager
         }
 
         private void button1_Click(object sender, EventArgs e)
-        {            
+        {
             frmRDPWindow xWnd = new frmRDPWindow();
-            xWnd.ConnectToServer(new cfgRemoteServer());
-            xWnd.Show();            
+            cfgRemoteServer xSrv = new cfgRemoteServer();
+            xWnd.ConnectToServer(xSrv);
+            xWnd.Show();
+            //xWnd.FullScreen = xSrv.FullScreen;          
             /*
             frmConnectionParams xWnd = new frmConnectionParams();
             xWnd.Show();*/
@@ -26,8 +30,13 @@ namespace RDPManager
             rdp.ClearTextPassword = Config.Password;
             
             ClientControl.Connect();*/
+
+            //MsRdpClient8NotSafeForScripting rdp = new MsRdpClient8NotSafeForScripting();
             /*
-            MsRdpClient8NotSafeForScripting rdp = new MsRdpClient8NotSafeForScripting();
+            AxMsRdpClient8 rdp = new AxMsRdpClient8();
+            ((ISupportInitialize)rdp).BeginInit();
+            Controls.Add(rdp);
+            ((ISupportInitialize)rdp).EndInit();
             //rdp = (MsRdpClient8NotSafeForScripting)ClientControl.GetOcx();
             cfgRemoteServer Config = new cfgRemoteServer();
             rdp.Server = Config.ServerName;
@@ -42,8 +51,7 @@ namespace RDPManager
             //SetClientWindowSize(Config.DisplayWidth, Config.DispalyHeight);
             rdp.ColorDepth = Config.ColorDepth;
             rdp.FullScreen = true;
-            rdp.Connect();
-            */
+            rdp.Connect();*/
         }
     }
 }
