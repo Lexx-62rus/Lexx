@@ -16,14 +16,16 @@ namespace RDPManager
 
         private void button1_Click(object sender, EventArgs e)
         {
+            /*
             frmRDPWindow xWnd = new frmRDPWindow();
             cfgRemoteServer xSrv = new cfgRemoteServer();
             xWnd.ConnectToServer(xSrv);
-            xWnd.Show();
-            //xWnd.FullScreen = xSrv.FullScreen;          
-            /*
+            xWnd.Show()
+            */
+            //xWnd.FullScreen = xSrv.FullScreen;                      
             frmConnectionParams xWnd = new frmConnectionParams();
-            xWnd.Show();*/
+            xWnd.Config = new cfgRemoteServer();
+            xWnd.Show();
             /*ClientControl.Server = Config.ServerName;
             ClientControl.UserName = Config.UserName;
             IMsTscNonScriptable rdp = (IMsTscNonScriptable)ClientControl.GetOcx();

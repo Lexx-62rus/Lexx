@@ -63,6 +63,16 @@ namespace RDPManager.Properties {
         /// <summary>
         ///   Looks up a localized resource of type System.Drawing.Bitmap.
         /// </summary>
+        internal static System.Drawing.Bitmap FitToWindow {
+            get {
+                object obj = ResourceManager.GetObject("FitToWindow", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        /// </summary>
         internal static System.Drawing.Bitmap full_screen_21 {
             get {
                 object obj = ResourceManager.GetObject("full_screen_21", resourceCulture);

@@ -73,6 +73,10 @@ namespace RDPManager
             set
             {
                 _isInitialization = true; 
+                if (btnFullScreen.Checked != value)
+                {
+                    btnFullScreen.Checked = value;
+                }
                 //if (value != _FullScreen)
                 //{
                     _FullScreen = value;
@@ -97,6 +101,7 @@ namespace RDPManager
                         rdp.AdvancedSettings8.SmartSizing = FitToWindow;
                     }
                     rdp.FullScreen = _FullScreen;
+                ClientControl.Refresh();
                 //}
                 _isInitialization = false;
             }
@@ -146,14 +151,15 @@ namespace RDPManager
             rdp.AdvancedSettings8.NegotiateSecurityLayer = false;
             //rdp.AdvancedSettings8.SmartSizing = FitToWindow;            
             rdp.AdvancedSettings8.ContainerHandledFullScreen = -1;
+            //rdp.AdvancedSettings8.AudioCaptureRedirectionMode
             //rdp.AdvancedSettings8.
             //rdp.AdvancedSettings8.RelativeMouseMode
             //rdp.AdvancedSettings8.RedirectDrives = true;    
             FullScreen = _connectionConfig.FullScreen;
             //rdp.FullScreen = _connectionConfig.FullScreen;
-            rdp.DesktopHeight = _connectionConfig.DispalyHeight;
+            rdp.DesktopHeight = _connectionConfig.DisplayHeight;
             rdp.DesktopWidth = _connectionConfig.DisplayWidth;
-            SetClientWindowSize(_connectionConfig.DisplayWidth, _connectionConfig.DispalyHeight);
+            SetClientWindowSize(_connectionConfig.DisplayWidth, _connectionConfig.DisplayHeight);
             rdp.ColorDepth = _connectionConfig.ColorDepth;
             ClientControl.Connect();
         }
@@ -297,6 +303,11 @@ namespace RDPManager
         private void btnFitToWindow_Click(object sender, EventArgs e)
         {
             FitToWindow = btnFitToWindow.Checked;
+        }
+
+        private void btnFullScreen_Click(object sender, EventArgs e)
+        {
+            FullScreen = btnFullScreen.Checked;
         }
     }
 }

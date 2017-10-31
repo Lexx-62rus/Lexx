@@ -32,6 +32,7 @@
             this.ClientControl = new AxMSTSCLib.AxMsTscAxNotSafeForScripting();
             this.tsMain = new System.Windows.Forms.ToolStrip();
             this.btnFitToWindow = new System.Windows.Forms.ToolStripButton();
+            this.btnFullScreen = new System.Windows.Forms.ToolStripButton();
             ((System.ComponentModel.ISupportInitialize)(this.ClientControl)).BeginInit();
             this.tsMain.SuspendLayout();
             this.SuspendLayout();
@@ -53,7 +54,8 @@
             // tsMain
             // 
             this.tsMain.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
-            this.btnFitToWindow});
+            this.btnFitToWindow,
+            this.btnFullScreen});
             this.tsMain.Location = new System.Drawing.Point(0, 0);
             this.tsMain.Name = "tsMain";
             this.tsMain.Size = new System.Drawing.Size(784, 25);
@@ -64,13 +66,25 @@
             // 
             this.btnFitToWindow.CheckOnClick = true;
             this.btnFitToWindow.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Image;
-            this.btnFitToWindow.Image = global::RDPManager.Properties.Resources.full_screen_21;
+            this.btnFitToWindow.Image = ((System.Drawing.Image)(resources.GetObject("btnFitToWindow.Image")));
             this.btnFitToWindow.ImageTransparentColor = System.Drawing.Color.Magenta;
             this.btnFitToWindow.Name = "btnFitToWindow";
             this.btnFitToWindow.Size = new System.Drawing.Size(23, 22);
             this.btnFitToWindow.Text = "toolStripButton1";
             this.btnFitToWindow.ToolTipText = "Fit to window";
             this.btnFitToWindow.Click += new System.EventHandler(this.btnFitToWindow_Click);
+            // 
+            // btnFullScreen
+            // 
+            this.btnFullScreen.CheckOnClick = true;
+            this.btnFullScreen.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Image;
+            this.btnFullScreen.Image = global::RDPManager.Properties.Resources.full_screen_21;
+            this.btnFullScreen.ImageTransparentColor = System.Drawing.Color.Magenta;
+            this.btnFullScreen.Name = "btnFullScreen";
+            this.btnFullScreen.Size = new System.Drawing.Size(23, 22);
+            this.btnFullScreen.Text = "toolStripButton1";
+            this.btnFullScreen.ToolTipText = "Set fullscreen window";
+            this.btnFullScreen.Click += new System.EventHandler(this.btnFullScreen_Click);
             // 
             // frmRDPWindow
             // 
@@ -96,5 +110,6 @@
         private AxMSTSCLib.AxMsTscAxNotSafeForScripting ClientControl;
         private System.Windows.Forms.ToolStrip tsMain;
         private System.Windows.Forms.ToolStripButton btnFitToWindow;
+        private System.Windows.Forms.ToolStripButton btnFullScreen;
     }
 }

@@ -32,14 +32,14 @@
             this.btnCancel = new System.Windows.Forms.Button();
             this.btnOk = new System.Windows.Forms.Button();
             this.panel2 = new System.Windows.Forms.Panel();
-            this.textBox1 = new System.Windows.Forms.TextBox();
+            this.tbConnectionName = new System.Windows.Forms.TextBox();
             this.label1 = new System.Windows.Forms.Label();
             this.tcSettings = new System.Windows.Forms.TabControl();
             this.tpGeneral = new System.Windows.Forms.TabPage();
             this.groupBox2 = new System.Windows.Forms.GroupBox();
-            this.textBox3 = new System.Windows.Forms.TextBox();
+            this.tbCustomDisplayHeight = new System.Windows.Forms.TextBox();
             this.label10 = new System.Windows.Forms.Label();
-            this.textBox2 = new System.Windows.Forms.TextBox();
+            this.tbCustomDisplayWidth = new System.Windows.Forms.TextBox();
             this.label9 = new System.Windows.Forms.Label();
             this.label8 = new System.Windows.Forms.Label();
             this.cbxColorDepth = new System.Windows.Forms.ComboBox();
@@ -48,6 +48,8 @@
             this.cbxScreenResolution = new System.Windows.Forms.ComboBox();
             this.label6 = new System.Windows.Forms.Label();
             this.groupBox1 = new System.Windows.Forms.GroupBox();
+            this.tbPort = new System.Windows.Forms.TextBox();
+            this.label11 = new System.Windows.Forms.Label();
             this.tbDomain = new System.Windows.Forms.TextBox();
             this.label5 = new System.Windows.Forms.Label();
             this.tbPassword = new System.Windows.Forms.TextBox();
@@ -57,13 +59,18 @@
             this.tbServer = new System.Windows.Forms.TextBox();
             this.label2 = new System.Windows.Forms.Label();
             this.tpResources = new System.Windows.Forms.TabPage();
+            this.groupBox4 = new System.Windows.Forms.GroupBox();
             this.groupBox3 = new System.Windows.Forms.GroupBox();
-            this.cbxDrives = new System.Windows.Forms.CheckBox();
-            this.cbxClipboard = new System.Windows.Forms.CheckBox();
-            this.cbxPrinters = new System.Windows.Forms.CheckBox();
-            this.cbxPorts = new System.Windows.Forms.CheckBox();
-            this.label11 = new System.Windows.Forms.Label();
-            this.tbPort = new System.Windows.Forms.TextBox();
+            this.cbPorts = new System.Windows.Forms.CheckBox();
+            this.cbDrives = new System.Windows.Forms.CheckBox();
+            this.cbClipboard = new System.Windows.Forms.CheckBox();
+            this.cbPrinters = new System.Windows.Forms.CheckBox();
+            this.label12 = new System.Windows.Forms.Label();
+            this.label13 = new System.Windows.Forms.Label();
+            this.cbxAudioPlayback = new System.Windows.Forms.ComboBox();
+            this.cbxAudioRecording = new System.Windows.Forms.ComboBox();
+            this.cbDevices = new System.Windows.Forms.CheckBox();
+            this.cbSmartCards = new System.Windows.Forms.CheckBox();
             this.panel1.SuspendLayout();
             this.panel2.SuspendLayout();
             this.tcSettings.SuspendLayout();
@@ -71,6 +78,7 @@
             this.groupBox2.SuspendLayout();
             this.groupBox1.SuspendLayout();
             this.tpResources.SuspendLayout();
+            this.groupBox4.SuspendLayout();
             this.groupBox3.SuspendLayout();
             this.SuspendLayout();
             // 
@@ -103,10 +111,11 @@
             this.btnOk.TabIndex = 0;
             this.btnOk.Text = "Ok";
             this.btnOk.UseVisualStyleBackColor = true;
+            this.btnOk.Click += new System.EventHandler(this.btnOk_Click);
             // 
             // panel2
             // 
-            this.panel2.Controls.Add(this.textBox1);
+            this.panel2.Controls.Add(this.tbConnectionName);
             this.panel2.Controls.Add(this.label1);
             this.panel2.Dock = System.Windows.Forms.DockStyle.Top;
             this.panel2.Location = new System.Drawing.Point(0, 0);
@@ -114,15 +123,15 @@
             this.panel2.Size = new System.Drawing.Size(418, 34);
             this.panel2.TabIndex = 2;
             // 
-            // textBox1
+            // tbConnectionName
             // 
-            this.textBox1.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+            this.tbConnectionName.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
             | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
-            this.textBox1.Location = new System.Drawing.Point(108, 8);
-            this.textBox1.Name = "textBox1";
-            this.textBox1.Size = new System.Drawing.Size(306, 20);
-            this.textBox1.TabIndex = 1;
+            this.tbConnectionName.Location = new System.Drawing.Point(108, 8);
+            this.tbConnectionName.Name = "tbConnectionName";
+            this.tbConnectionName.Size = new System.Drawing.Size(306, 20);
+            this.tbConnectionName.TabIndex = 1;
             // 
             // label1
             // 
@@ -158,9 +167,9 @@
             // 
             // groupBox2
             // 
-            this.groupBox2.Controls.Add(this.textBox3);
+            this.groupBox2.Controls.Add(this.tbCustomDisplayHeight);
             this.groupBox2.Controls.Add(this.label10);
-            this.groupBox2.Controls.Add(this.textBox2);
+            this.groupBox2.Controls.Add(this.tbCustomDisplayWidth);
             this.groupBox2.Controls.Add(this.label9);
             this.groupBox2.Controls.Add(this.label8);
             this.groupBox2.Controls.Add(this.cbxColorDepth);
@@ -176,12 +185,13 @@
             this.groupBox2.TabStop = false;
             this.groupBox2.Text = "Display properties";
             // 
-            // textBox3
+            // tbCustomDisplayHeight
             // 
-            this.textBox3.Location = new System.Drawing.Point(310, 50);
-            this.textBox3.Name = "textBox3";
-            this.textBox3.Size = new System.Drawing.Size(88, 20);
-            this.textBox3.TabIndex = 9;
+            this.tbCustomDisplayHeight.Location = new System.Drawing.Point(310, 50);
+            this.tbCustomDisplayHeight.Name = "tbCustomDisplayHeight";
+            this.tbCustomDisplayHeight.Size = new System.Drawing.Size(88, 20);
+            this.tbCustomDisplayHeight.TabIndex = 10;
+            this.tbCustomDisplayHeight.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.checkDigits);
             // 
             // label10
             // 
@@ -192,12 +202,13 @@
             this.label10.TabIndex = 8;
             this.label10.Text = "Height:";
             // 
-            // textBox2
+            // tbCustomDisplayWidth
             // 
-            this.textBox2.Location = new System.Drawing.Point(155, 50);
-            this.textBox2.Name = "textBox2";
-            this.textBox2.Size = new System.Drawing.Size(88, 20);
-            this.textBox2.TabIndex = 7;
+            this.tbCustomDisplayWidth.Location = new System.Drawing.Point(155, 50);
+            this.tbCustomDisplayWidth.Name = "tbCustomDisplayWidth";
+            this.tbCustomDisplayWidth.Size = new System.Drawing.Size(88, 20);
+            this.tbCustomDisplayWidth.TabIndex = 9;
+            this.tbCustomDisplayWidth.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.checkDigits);
             // 
             // label9
             // 
@@ -229,7 +240,7 @@
             this.cbxColorDepth.Location = new System.Drawing.Point(114, 79);
             this.cbxColorDepth.Name = "cbxColorDepth";
             this.cbxColorDepth.Size = new System.Drawing.Size(284, 21);
-            this.cbxColorDepth.TabIndex = 4;
+            this.cbxColorDepth.TabIndex = 11;
             // 
             // label7
             // 
@@ -248,7 +259,7 @@
             this.cbxFitToWindow.Location = new System.Drawing.Point(310, 21);
             this.cbxFitToWindow.Name = "cbxFitToWindow";
             this.cbxFitToWindow.Size = new System.Drawing.Size(88, 17);
-            this.cbxFitToWindow.TabIndex = 2;
+            this.cbxFitToWindow.TabIndex = 8;
             this.cbxFitToWindow.Text = "Fit to window";
             this.cbxFitToWindow.UseVisualStyleBackColor = true;
             // 
@@ -275,7 +286,8 @@
             this.cbxScreenResolution.Location = new System.Drawing.Point(114, 19);
             this.cbxScreenResolution.Name = "cbxScreenResolution";
             this.cbxScreenResolution.Size = new System.Drawing.Size(190, 21);
-            this.cbxScreenResolution.TabIndex = 1;
+            this.cbxScreenResolution.TabIndex = 7;
+            this.cbxScreenResolution.SelectedIndexChanged += new System.EventHandler(this.cbxScreenResolution_SelectedIndexChanged);
             // 
             // label6
             // 
@@ -306,6 +318,23 @@
             this.groupBox1.TabStop = false;
             this.groupBox1.Text = "Connection properties";
             // 
+            // tbPort
+            // 
+            this.tbPort.Location = new System.Drawing.Point(345, 19);
+            this.tbPort.Name = "tbPort";
+            this.tbPort.Size = new System.Drawing.Size(53, 20);
+            this.tbPort.TabIndex = 3;
+            this.tbPort.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.checkDigits);
+            // 
+            // label11
+            // 
+            this.label11.AutoSize = true;
+            this.label11.Location = new System.Drawing.Point(310, 22);
+            this.label11.Name = "label11";
+            this.label11.Size = new System.Drawing.Size(29, 13);
+            this.label11.TabIndex = 16;
+            this.label11.Text = "Port:";
+            // 
             // tbDomain
             // 
             this.tbDomain.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
@@ -313,7 +342,7 @@
             this.tbDomain.Location = new System.Drawing.Point(114, 107);
             this.tbDomain.Name = "tbDomain";
             this.tbDomain.Size = new System.Drawing.Size(284, 20);
-            this.tbDomain.TabIndex = 15;
+            this.tbDomain.TabIndex = 6;
             this.tbDomain.UseSystemPasswordChar = true;
             // 
             // label5
@@ -332,7 +361,7 @@
             this.tbPassword.Location = new System.Drawing.Point(114, 77);
             this.tbPassword.Name = "tbPassword";
             this.tbPassword.Size = new System.Drawing.Size(284, 20);
-            this.tbPassword.TabIndex = 13;
+            this.tbPassword.TabIndex = 5;
             this.tbPassword.UseSystemPasswordChar = true;
             // 
             // label4
@@ -351,7 +380,7 @@
             this.tbUserName.Location = new System.Drawing.Point(114, 48);
             this.tbUserName.Name = "tbUserName";
             this.tbUserName.Size = new System.Drawing.Size(284, 20);
-            this.tbUserName.TabIndex = 11;
+            this.tbUserName.TabIndex = 4;
             // 
             // label3
             // 
@@ -369,7 +398,7 @@
             this.tbServer.Location = new System.Drawing.Point(114, 19);
             this.tbServer.Name = "tbServer";
             this.tbServer.Size = new System.Drawing.Size(190, 20);
-            this.tbServer.TabIndex = 9;
+            this.tbServer.TabIndex = 2;
             // 
             // label2
             // 
@@ -382,6 +411,7 @@
             // 
             // tpResources
             // 
+            this.tpResources.Controls.Add(this.groupBox4);
             this.tpResources.Controls.Add(this.groupBox3);
             this.tpResources.Location = new System.Drawing.Point(4, 22);
             this.tpResources.Name = "tpResources";
@@ -391,12 +421,28 @@
             this.tpResources.Text = "Advanced";
             this.tpResources.UseVisualStyleBackColor = true;
             // 
+            // groupBox4
+            // 
+            this.groupBox4.Controls.Add(this.cbxAudioRecording);
+            this.groupBox4.Controls.Add(this.cbxAudioPlayback);
+            this.groupBox4.Controls.Add(this.label13);
+            this.groupBox4.Controls.Add(this.label12);
+            this.groupBox4.Dock = System.Windows.Forms.DockStyle.Top;
+            this.groupBox4.Location = new System.Drawing.Point(3, 69);
+            this.groupBox4.Name = "groupBox4";
+            this.groupBox4.Size = new System.Drawing.Size(404, 42);
+            this.groupBox4.TabIndex = 1;
+            this.groupBox4.TabStop = false;
+            this.groupBox4.Text = "Audo";
+            // 
             // groupBox3
             // 
-            this.groupBox3.Controls.Add(this.cbxPorts);
-            this.groupBox3.Controls.Add(this.cbxDrives);
-            this.groupBox3.Controls.Add(this.cbxClipboard);
-            this.groupBox3.Controls.Add(this.cbxPrinters);
+            this.groupBox3.Controls.Add(this.cbSmartCards);
+            this.groupBox3.Controls.Add(this.cbDevices);
+            this.groupBox3.Controls.Add(this.cbPorts);
+            this.groupBox3.Controls.Add(this.cbDrives);
+            this.groupBox3.Controls.Add(this.cbClipboard);
+            this.groupBox3.Controls.Add(this.cbPrinters);
             this.groupBox3.Dock = System.Windows.Forms.DockStyle.Top;
             this.groupBox3.Location = new System.Drawing.Point(3, 3);
             this.groupBox3.Name = "groupBox3";
@@ -405,61 +451,108 @@
             this.groupBox3.TabStop = false;
             this.groupBox3.Text = "Local Resources";
             // 
-            // cbxDrives
+            // cbPorts
             // 
-            this.cbxDrives.AutoSize = true;
-            this.cbxDrives.Location = new System.Drawing.Point(101, 19);
-            this.cbxDrives.Name = "cbxDrives";
-            this.cbxDrives.Size = new System.Drawing.Size(56, 17);
-            this.cbxDrives.TabIndex = 2;
-            this.cbxDrives.Text = "Drives";
-            this.cbxDrives.UseVisualStyleBackColor = true;
+            this.cbPorts.AutoSize = true;
+            this.cbPorts.Location = new System.Drawing.Point(188, 42);
+            this.cbPorts.Name = "cbPorts";
+            this.cbPorts.Size = new System.Drawing.Size(50, 17);
+            this.cbPorts.TabIndex = 3;
+            this.cbPorts.Text = "Ports";
+            this.cbPorts.UseVisualStyleBackColor = true;
             // 
-            // cbxClipboard
+            // cbDrives
             // 
-            this.cbxClipboard.AutoSize = true;
-            this.cbxClipboard.Location = new System.Drawing.Point(5, 42);
-            this.cbxClipboard.Name = "cbxClipboard";
-            this.cbxClipboard.Size = new System.Drawing.Size(70, 17);
-            this.cbxClipboard.TabIndex = 1;
-            this.cbxClipboard.Text = "Clipboard";
-            this.cbxClipboard.UseVisualStyleBackColor = true;
+            this.cbDrives.AutoSize = true;
+            this.cbDrives.Location = new System.Drawing.Point(188, 19);
+            this.cbDrives.Name = "cbDrives";
+            this.cbDrives.Size = new System.Drawing.Size(56, 17);
+            this.cbDrives.TabIndex = 2;
+            this.cbDrives.Text = "Drives";
+            this.cbDrives.UseVisualStyleBackColor = true;
             // 
-            // cbxPrinters
+            // cbClipboard
             // 
-            this.cbxPrinters.AutoSize = true;
-            this.cbxPrinters.Location = new System.Drawing.Point(5, 19);
-            this.cbxPrinters.Name = "cbxPrinters";
-            this.cbxPrinters.Size = new System.Drawing.Size(61, 17);
-            this.cbxPrinters.TabIndex = 0;
-            this.cbxPrinters.Text = "Printers";
-            this.cbxPrinters.UseVisualStyleBackColor = true;
+            this.cbClipboard.AutoSize = true;
+            this.cbClipboard.Location = new System.Drawing.Point(5, 42);
+            this.cbClipboard.Name = "cbClipboard";
+            this.cbClipboard.Size = new System.Drawing.Size(70, 17);
+            this.cbClipboard.TabIndex = 1;
+            this.cbClipboard.Text = "Clipboard";
+            this.cbClipboard.UseVisualStyleBackColor = true;
             // 
-            // cbxPorts
+            // cbPrinters
             // 
-            this.cbxPorts.AutoSize = true;
-            this.cbxPorts.Location = new System.Drawing.Point(101, 42);
-            this.cbxPorts.Name = "cbxPorts";
-            this.cbxPorts.Size = new System.Drawing.Size(50, 17);
-            this.cbxPorts.TabIndex = 3;
-            this.cbxPorts.Text = "Ports";
-            this.cbxPorts.UseVisualStyleBackColor = true;
+            this.cbPrinters.AutoSize = true;
+            this.cbPrinters.Location = new System.Drawing.Point(5, 19);
+            this.cbPrinters.Name = "cbPrinters";
+            this.cbPrinters.Size = new System.Drawing.Size(61, 17);
+            this.cbPrinters.TabIndex = 0;
+            this.cbPrinters.Text = "Printers";
+            this.cbPrinters.UseVisualStyleBackColor = true;
             // 
-            // label11
+            // label12
             // 
-            this.label11.AutoSize = true;
-            this.label11.Location = new System.Drawing.Point(310, 22);
-            this.label11.Name = "label11";
-            this.label11.Size = new System.Drawing.Size(29, 13);
-            this.label11.TabIndex = 16;
-            this.label11.Text = "Port:";
+            this.label12.AutoSize = true;
+            this.label12.Location = new System.Drawing.Point(6, 16);
+            this.label12.Name = "label12";
+            this.label12.Size = new System.Drawing.Size(54, 13);
+            this.label12.TabIndex = 0;
+            this.label12.Text = "Playback:";
             // 
-            // tbPort
+            // label13
             // 
-            this.tbPort.Location = new System.Drawing.Point(345, 19);
-            this.tbPort.Name = "tbPort";
-            this.tbPort.Size = new System.Drawing.Size(53, 20);
-            this.tbPort.TabIndex = 17;
+            this.label13.AutoSize = true;
+            this.label13.Location = new System.Drawing.Point(212, 16);
+            this.label13.Name = "label13";
+            this.label13.Size = new System.Drawing.Size(59, 13);
+            this.label13.TabIndex = 1;
+            this.label13.Text = "Recording:";
+            // 
+            // cbxAudioPlayback
+            // 
+            this.cbxAudioPlayback.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
+            this.cbxAudioPlayback.FormattingEnabled = true;
+            this.cbxAudioPlayback.Items.AddRange(new object[] {
+            "Local computer",
+            "Remote computer",
+            "None"});
+            this.cbxAudioPlayback.Location = new System.Drawing.Point(66, 13);
+            this.cbxAudioPlayback.Name = "cbxAudioPlayback";
+            this.cbxAudioPlayback.Size = new System.Drawing.Size(121, 21);
+            this.cbxAudioPlayback.TabIndex = 2;
+            // 
+            // cbxAudioRecording
+            // 
+            this.cbxAudioRecording.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
+            this.cbxAudioRecording.FormattingEnabled = true;
+            this.cbxAudioRecording.Items.AddRange(new object[] {
+            "Local computer",
+            "None"});
+            this.cbxAudioRecording.Location = new System.Drawing.Point(277, 13);
+            this.cbxAudioRecording.Name = "cbxAudioRecording";
+            this.cbxAudioRecording.Size = new System.Drawing.Size(121, 21);
+            this.cbxAudioRecording.TabIndex = 3;
+            // 
+            // cbDevices
+            // 
+            this.cbDevices.AutoSize = true;
+            this.cbDevices.Location = new System.Drawing.Point(314, 19);
+            this.cbDevices.Name = "cbDevices";
+            this.cbDevices.Size = new System.Drawing.Size(65, 17);
+            this.cbDevices.TabIndex = 4;
+            this.cbDevices.Text = "Devices";
+            this.cbDevices.UseVisualStyleBackColor = true;
+            // 
+            // cbSmartCards
+            // 
+            this.cbSmartCards.AutoSize = true;
+            this.cbSmartCards.Location = new System.Drawing.Point(314, 42);
+            this.cbSmartCards.Name = "cbSmartCards";
+            this.cbSmartCards.Size = new System.Drawing.Size(83, 17);
+            this.cbSmartCards.TabIndex = 5;
+            this.cbSmartCards.Text = "Smart Cards";
+            this.cbSmartCards.UseVisualStyleBackColor = true;
             // 
             // frmConnectionParams
             // 
@@ -470,6 +563,7 @@
             this.Controls.Add(this.panel2);
             this.Controls.Add(this.panel1);
             this.Name = "frmConnectionParams";
+            this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "Connection properties";
             this.panel1.ResumeLayout(false);
             this.panel2.ResumeLayout(false);
@@ -481,6 +575,8 @@
             this.groupBox1.ResumeLayout(false);
             this.groupBox1.PerformLayout();
             this.tpResources.ResumeLayout(false);
+            this.groupBox4.ResumeLayout(false);
+            this.groupBox4.PerformLayout();
             this.groupBox3.ResumeLayout(false);
             this.groupBox3.PerformLayout();
             this.ResumeLayout(false);
@@ -493,7 +589,7 @@
         private System.Windows.Forms.Button btnCancel;
         private System.Windows.Forms.Button btnOk;
         private System.Windows.Forms.Panel panel2;
-        private System.Windows.Forms.TextBox textBox1;
+        private System.Windows.Forms.TextBox tbConnectionName;
         private System.Windows.Forms.Label label1;
         private System.Windows.Forms.TabControl tcSettings;
         private System.Windows.Forms.TabPage tpGeneral;
@@ -513,17 +609,24 @@
         private System.Windows.Forms.TextBox tbServer;
         private System.Windows.Forms.Label label2;
         private System.Windows.Forms.ComboBox cbxColorDepth;
-        private System.Windows.Forms.TextBox textBox3;
+        private System.Windows.Forms.TextBox tbCustomDisplayHeight;
         private System.Windows.Forms.Label label10;
-        private System.Windows.Forms.TextBox textBox2;
+        private System.Windows.Forms.TextBox tbCustomDisplayWidth;
         private System.Windows.Forms.Label label9;
         private System.Windows.Forms.Label label8;
         private System.Windows.Forms.GroupBox groupBox3;
-        private System.Windows.Forms.CheckBox cbxClipboard;
-        private System.Windows.Forms.CheckBox cbxPrinters;
-        private System.Windows.Forms.CheckBox cbxDrives;
+        private System.Windows.Forms.CheckBox cbClipboard;
+        private System.Windows.Forms.CheckBox cbPrinters;
+        private System.Windows.Forms.CheckBox cbDrives;
         private System.Windows.Forms.TextBox tbPort;
         private System.Windows.Forms.Label label11;
-        private System.Windows.Forms.CheckBox cbxPorts;
+        private System.Windows.Forms.CheckBox cbPorts;
+        private System.Windows.Forms.GroupBox groupBox4;
+        private System.Windows.Forms.ComboBox cbxAudioRecording;
+        private System.Windows.Forms.ComboBox cbxAudioPlayback;
+        private System.Windows.Forms.Label label13;
+        private System.Windows.Forms.Label label12;
+        private System.Windows.Forms.CheckBox cbSmartCards;
+        private System.Windows.Forms.CheckBox cbDevices;
     }
 }

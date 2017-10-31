@@ -126,6 +126,7 @@
     <None Include="Images\zoom_auto.png" />
   </ItemGroup>
   <ItemGroup>
+    <None Include="Images\FitToWindow.png" />
     <Content Include="Images\screen.ico" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
