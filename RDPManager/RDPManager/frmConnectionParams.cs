@@ -105,6 +105,14 @@ namespace RDPManager
             xCfg.FullScreen = (cbxScreenResolution.SelectedIndex + 1 == cbxScreenResolution.Items.Count);
             xCfg.FitToWindow = cbxFitToWindow.Checked;
             xCfg.ColorDepth = (cbxColorDepth.SelectedItem as ColorDepth).bpp;
+            xCfg.RedirectPrinters = cbPrinters.Checked;
+            xCfg.RedirectClipboard = cbClipboard.Checked;
+            xCfg.RedirectDrives = cbDrives.Checked;
+            xCfg.RedirectPorts = cbPorts.Checked;
+            xCfg.RedirectDevices = cbDevices.Checked;
+            xCfg.RedirectSmartCards = cbSmartCards.Checked;
+            xCfg.AudioRedirectionMode = (cbxAudioPlayback.SelectedItem as AudioPlaybackMode).Mode;
+            xCfg.AudioAudioCaptureRedirectionMode = (cbxAudioRecording.SelectedItem as AudioPlaybackMode).Mode;
             return xCfg;
         }
         public frmConnectionParams()
